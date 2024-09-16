@@ -9,6 +9,11 @@ const config: Config = {
 	],
 	theme: {
 		extend: {
+			padding: {
+				"content-padding-sm": "20px",
+				"content-padding-lg": "60px",
+				"content-padding-2xl": "80px",
+			},
 			colors: {
 				background: "var(--background)",
 				foreground: "var(--foreground)",
