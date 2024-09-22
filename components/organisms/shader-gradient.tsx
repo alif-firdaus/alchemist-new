@@ -29,7 +29,7 @@ export default function ShaderGradientComponent() {
 				uStrength={1.5}
 				uDensity={1.5}
 				color1="#6917B0"
-				color2="#FF5E29"
+				color2="#FF3819"
 				color3="#212121"
 				reflection={10}
 				grain="off"
