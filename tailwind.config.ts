@@ -13,10 +13,10 @@ const config: Config = {
 				"aeonik-light": ["var(--aeonik-light)", "sans-serif"],
 				"aeonik-regular": ["var(--aeonik-regular)", "sans-serif"],
 				"aeonik-medium": ["var(--aeonik-medium)", "sans-serif"],
-				"kode-mono": ["var(--kode-mono)"],
+				"kode-mono": ["var(--kode-mono)", "monospace"],
 			},
 			padding: {
-				"content-padding-sm": "20px",
+				"content-padding-sm": "22px",
 				"content-padding-lg": "60px",
 				"content-padding-2xl": "80px",
 			},

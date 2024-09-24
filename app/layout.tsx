@@ -3,6 +3,9 @@ import localFont from "next/font/local";
 import { Cormorant, Kode_Mono } from "next/font/google";
 import "./globals.css";
 
+// Import Components //
+import Navbar from "@/components/organisms/navbar";
+
 const cormorant = Cormorant({
 	subsets: ["latin"],
 	weight: ["300", "400", "500", "600", "700"],
@@ -11,7 +14,6 @@ const cormorant = Cormorant({
 const kodemono = Kode_Mono({
 	subsets: ["latin"],
 	weight: ["400"],
-	display: "swap",
 	variable: "--kode-mono",
 });
 
@@ -51,7 +53,10 @@ export default function RootLayout({
 			lang="en"
 			className={`scroll-smooth ${cormorant.className} ${aeonikLight.variable} ${aeonikRegular.variable} ${aeonikMedium.variable} ${kodemono.variable}`}
 		>
-			<body>{children}</body>
+			<body>
+				<Navbar />
+				{children}
+			</body>
 		</html>
 	);
 }
