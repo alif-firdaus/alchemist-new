@@ -13,7 +13,7 @@ const config: Config = {
 				"aeonik-light": ["var(--aeonik-light)", "sans-serif"],
 				"aeonik-regular": ["var(--aeonik-regular)", "sans-serif"],
 				"aeonik-medium": ["var(--aeonik-medium)", "sans-serif"],
-				"kode-mono": ["var(--kode-mono)", "monospace"],
+				"kode-mono": ["var(--kode-mono)"],
 			},
 			padding: {
 				"content-padding-sm": "22px",
