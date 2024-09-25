@@ -3,7 +3,6 @@
 import React from "react";
 import { ShaderGradientCanvas, ShaderGradient } from "shadergradient";
 import * as reactSpring from "@react-spring/three";
-// import { Environment } from "@react-three/drei";
 import * as drei from "@react-three/drei";
 import * as fiber from "@react-three/fiber";
 
@@ -20,17 +19,16 @@ export default function ShaderGradientComponent() {
 				top: 0,
 				width: "100%",
 				height: "100%",
-				zIndex: -1, // Ensures it's behind other content
-				overflow: "hidden", // Prevents zoom or scroll affecting the canvas
+				zIndex: -1,
+				overflow: "hidden",
 			}}
 		>
-			{/* Add ShaderGradient with your parameters */}
 			<ShaderGradient
 				type="waterPlane"
 				uStrength={1.5}
 				uDensity={1.5}
 				color1="#5012BB"
-				color2="#4023FF"
+				color2="#4128E7"
 				color3="#212121"
 				reflection={10}
 				grain="off"
@@ -52,7 +50,7 @@ export default function ShaderGradientComponent() {
 				enableTransition={false}
 			/>
 
-			{/* You can add OrbitControls, Environment, or any drei components here */}
+			{/* OrbitControls, Environment, or any drei components here */}
 		</ShaderGradientCanvas>
 	);
 }

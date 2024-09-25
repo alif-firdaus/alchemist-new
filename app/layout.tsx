@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Cormorant, Kode_Mono } from "next/font/google";
+import { Cormorant } from "next/font/google";
 import "./globals.css";
 
 // Import Components //
@@ -11,9 +11,10 @@ const cormorant = Cormorant({
 	weight: ["300", "400", "500", "600", "700"],
 });
 
-const kodemono = Kode_Mono({
-	subsets: ["latin"],
-	weight: ["400"],
+const kodemono = localFont({
+	src: "./fonts/kodemono-regular.ttf",
+	weight: "400",
+	style: "normal",
 	variable: "--kode-mono",
 });
 
