@@ -22,7 +22,7 @@ const aeonikLight = localFont({
 	src: "./fonts/aeonik-light.otf",
 	weight: "300",
 	style: "normal",
-	variable: "--aeonik-regular",
+	variable: "--aeonik-light",
 });
 
 const aeonikRegular = localFont({
