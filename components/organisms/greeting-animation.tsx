@@ -24,6 +24,9 @@ const GreetingAnimation = () => {
 					animate={{ opacity: 1, y: 0 }}
 					exit={{ opacity: 0, y: -20 }}
 					transition={{ duration: 0.8 }}
+					style={{
+						backfaceVisibility: "hidden",
+					}}
 					className="text-[100px] font-aeonik-regular text-floral-white tracking-tighter"
 				>
 					{greetings[index]}
