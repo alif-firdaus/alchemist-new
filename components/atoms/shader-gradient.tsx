@@ -3,6 +3,7 @@
 import React from "react";
 import { ShaderGradientCanvas, ShaderGradient } from "shadergradient";
 import * as reactSpring from "@react-spring/three";
+// import { Environment } from "@react-three/drei";
 import * as drei from "@react-three/drei";
 import * as fiber from "@react-three/fiber";
 
@@ -33,7 +34,7 @@ export default function ShaderGradientComponent() {
 				color3="#212121"
 				reflection={10}
 				grain="off"
-				brightness={3}
+				brightness={1}
 				animate="on"
 				uSpeed={0.2}
 				rangeStart={0}
