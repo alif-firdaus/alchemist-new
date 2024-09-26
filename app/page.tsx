@@ -23,7 +23,7 @@ export default function Home() {
 								alt="Sparkle"
 								className="w-8 h-8"
 							/>
-							<p className="text-[26px] text-floral-white font-aeonik-light tracking-[0.01] leading-[1.1]">
+							<p className="text-[26px] text-floral-white font-aeonik-regular tracking-[0.01] leading-[1.1]">
 								A passionate multidisciplinary designer who
 								cares about crafting captivating interfaces that
 								keep people coming back.
