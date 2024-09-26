@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { delay, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 // Import Icons //
 import { ArrowRightIcon } from "@radix-ui/react-icons";
