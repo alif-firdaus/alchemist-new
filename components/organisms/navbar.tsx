@@ -46,7 +46,7 @@ function Navbar() {
 			setOpen(true);
 		} else {
 			setShowContent(false);
-			setTimeout(() => setOpen(false), 100); // Delay closing animation
+			setTimeout(() => setOpen(false), 10); // Delay closing animation
 		}
 	};
 
@@ -97,7 +97,7 @@ function Navbar() {
 			},
 		},
 		closed: {
-			width: "0px",
+			width: "100vw",
 			height: "0px",
 			top: "0px",
 			right: "0px",
@@ -115,7 +115,7 @@ function Navbar() {
 			opacity: 1,
 			transition: {
 				delay: 0.1,
-				duration: 0.6,
+				duration: 0.5,
 				ease: [0.76, 0, 0.24, 1],
 			},
 		},
@@ -156,7 +156,7 @@ function Navbar() {
 				variants={variants}
 				animate={isOpen ? "open" : "closed"}
 				initial="closed"
-				className="bg-floral-white absolute z-[200] overflow-hidden h-full"
+				className="bg-floral-white z-[200] fixed overflow-hidden h-screen"
 				onAnimationComplete={() => {
 					if (isOpen) {
 						setShowContent(true);
@@ -188,7 +188,7 @@ function Navbar() {
 							animate={isOpen ? "visible" : "hidden"}
 							exit="hidden"
 							variants={contentVariants}
-							className="flex flex-col items-start pt-16 px-content-padding-sm justify-between pb-32 h-full w-full"
+							className="flex flex-col items-start pt-14 px-content-padding-sm justify-between pb-28 h-full w-full"
 						>
 							<div className="flex flex-col gap-1 w-full h-fit items-start justify-center text-5xl font-aeonik-regular text-charcoal tracking-tight">
 								{navLinks.map(({ text, path }) => (
@@ -257,7 +257,7 @@ function Navbar() {
 									</div>
 								</Link>
 
-								<div className="flex items-center justify-end mt-10">
+								<div className="flex items-center justify-end mt-7">
 									<p className="text-base text-charcoal font-aeonik-regular">
 										&copy; Alchemist 2024
 									</p>
