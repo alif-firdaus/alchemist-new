@@ -27,7 +27,7 @@ const GreetingAnimation = () => {
 					style={{
 						backfaceVisibility: "hidden",
 					}}
-					className="text-[100px] font-aeonik-regular text-floral-white tracking-tighter"
+					className="text-8xl font-aeonik-regular text-floral-white tracking-tighter"
 				>
 					{greetings[index]}
 				</motion.h1>

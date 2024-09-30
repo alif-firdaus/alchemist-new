@@ -17,7 +17,7 @@ const config: Config = {
 			},
 			padding: {
 				"content-padding-sm": "22px",
-				"content-padding-lg": "60px",
+				"content-padding-lg": "40px",
 				"content-padding-2xl": "80px",
 			},
 			colors: {
