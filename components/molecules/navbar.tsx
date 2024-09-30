@@ -125,25 +125,6 @@ function Navbar() {
 		},
 	};
 
-	const contentMobileVariants = {
-		visible: {
-			opacity: 1,
-			transition: {
-				delay: 0.1,
-				duration: 0.5,
-				ease: [0.76, 0, 0.24, 1],
-			},
-		},
-		hidden: {
-			opacity: 0,
-			transition: {
-				delay: 1,
-				duration: 10,
-				ease: [0.61, 1, 0.88, 1],
-			},
-		},
-	};
-
 	return (
 		<>
 			{/* <-- ==== Navbar Mobile Start ==== --> */}
