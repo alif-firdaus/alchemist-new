@@ -102,7 +102,7 @@ function Navbar() {
 
 	const navbarDesktopVariants = {
 		open: {
-			width: "40%",
+			width: "41%",
 			height: "100vh",
 			top: "0px",
 			right: "0px",
@@ -147,7 +147,7 @@ function Navbar() {
 						onClick={toggleMenu}
 						className="block w-fit lg:cursor-pointer"
 					>
-						<p className="text-sm text-floral-white  text-opacity-90 font-kode-mono">
+						<p className="text-sm lg:text-[13px] text-floral-white text-opacity-90 font-kode-mono">
 							[ MENU ]
 						</p>
 					</div>
@@ -159,7 +159,7 @@ function Navbar() {
 				variants={navbarMobileVariants}
 				animate={isOpen ? "open" : "closed"}
 				initial="closed"
-				className="bg-floral-white z-[200] fixed overflow-hidden h-screen lg:hidden"
+				className="bg-[#A9FDBF] z-[200] fixed overflow-hidden h-screen lg:hidden"
 				onAnimationComplete={() => {
 					if (isOpen) {
 						setShowContent(true);
@@ -319,7 +319,7 @@ function Navbar() {
 				variants={navbarDesktopVariants}
 				animate={isOpen ? "open" : "closed"}
 				initial="closed"
-				className="bg-floral-white z-[200] fixed overflow-hidden h-fit hidden lg:block"
+				className="bg-[#A9FDBF] z-[200] fixed overflow-hidden h-fit hidden lg:block"
 			>
 				<>
 					<motion.div
@@ -340,7 +340,7 @@ function Navbar() {
 								duration: 0.5,
 								ease: "easeInOut",
 							}}
-							className="text-base text-charcoal font-aeonik-regular"
+							className="text-[15px] text-charcoal font-aeonik-regular"
 						>
 							Navigate
 						</motion.p>
@@ -359,7 +359,7 @@ function Navbar() {
 									duration: 0.5,
 									ease: "easeInOut",
 								}}
-								className="text-sm text-charcoal text-opacity-90 font-kode-mono"
+								className="text-[13px] text-charcoal text-opacity-90 font-kode-mono"
 							>
 								[ CLOSE ]
 							</motion.p>
@@ -462,7 +462,7 @@ function Navbar() {
 								}}
 								className="flex items-center justify-end mt-7"
 							>
-								<p className="text-base text-charcoal font-aeonik-regular">
+								<p className="text-[15px] text-charcoal font-aeonik-regular">
 									&copy; Alchemist 2024
 								</p>
 							</motion.div>

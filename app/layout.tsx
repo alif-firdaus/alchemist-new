@@ -4,6 +4,7 @@ import { Cormorant } from "next/font/google";
 import "./globals.css";
 
 // Import Components //
+import LenisScroll from "@/components/organisms/lenis-scroll";
 import { NavbarProvider } from "@/components/organisms/navbar-context";
 import Navbar from "@/components/molecules/navbar";
 
@@ -53,12 +54,12 @@ export default function RootLayout({
 	return (
 		<html
 			lang="en"
-			className={`scroll-smooth ${cormorant.className} ${aeonikLight.variable} ${aeonikRegular.variable} ${aeonikMedium.variable} ${kodemono.variable}`}
+			className={`${cormorant.className} ${aeonikLight.variable} ${aeonikRegular.variable} ${aeonikMedium.variable} ${kodemono.variable}`}
 		>
-			<body>
+			<body className="bg-[#151515]">
 				<NavbarProvider>
 					<Navbar />
-					{children}
+					<LenisScroll>{children}</LenisScroll>
 				</NavbarProvider>
 			</body>
 		</html>
