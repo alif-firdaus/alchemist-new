@@ -22,7 +22,7 @@ const config: Config = {
 			},
 			colors: {
 				charcoal: "#292929",
-				"floral-white": "#FFFAEF",
+				"floral-white": "#FCFCFC",
 				"coral-red": "#F8413A",
 				"rich-black": "#040404",
 			},

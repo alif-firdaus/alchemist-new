@@ -27,9 +27,9 @@ export default function ShaderGradientComponent() {
 				type="waterPlane"
 				uStrength={1.5}
 				uDensity={1.5}
-				color1="#5012BB"
-				color2="#4128E7"
-				color3="#212121"
+				color1="#000000"
+				color2="#494949"
+				color3="#000000"
 				reflection={10}
 				grain="off"
 				brightness={1}
