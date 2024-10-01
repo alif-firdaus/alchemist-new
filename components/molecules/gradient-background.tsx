@@ -6,7 +6,7 @@ const NoSSRShaderGradient = dynamic(
 	{ ssr: false }
 );
 
-export default function GradientBacground() {
+export default function GradientBackground() {
 	return (
 		<main style={{ height: "100vh", position: "relative" }}>
 			<NoSSRShaderGradient />

@@ -4,7 +4,8 @@ import { Cormorant } from "next/font/google";
 import "./globals.css";
 
 // Import Components //
-import Navbar from "@/components/organisms/navbar";
+import { NavbarProvider } from "@/components/organisms/navbar-context";
+import Navbar from "@/components/molecules/navbar";
 
 const cormorant = Cormorant({
 	subsets: ["latin"],
@@ -55,8 +56,10 @@ export default function RootLayout({
 			className={`scroll-smooth ${cormorant.className} ${aeonikLight.variable} ${aeonikRegular.variable} ${aeonikMedium.variable} ${kodemono.variable}`}
 		>
 			<body>
-				<Navbar />
-				{children}
+				<NavbarProvider>
+					<Navbar />
+					{children}
+				</NavbarProvider>
 			</body>
 		</html>
 	);
