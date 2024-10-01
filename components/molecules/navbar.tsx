@@ -328,7 +328,7 @@ function Navbar() {
 						exit={{ opacity: 0 }}
 						transition={{
 							duration: 0.5,
-							delay: 0.5,
+							delay: 0.6,
 						}}
 						className="flex items-center justify-between px-content-padding-lg py-7"
 					>
@@ -378,7 +378,7 @@ function Navbar() {
 							exit={{ opacity: 0 }}
 							transition={{
 								duration: 0.5,
-								delay: 0.5,
+								delay: 0.6,
 							}}
 							className="flex flex-col gap-1 w-full h-fit items-start  justify-center text-6xl font-aeonik-regular text-charcoal tracking-tight"
 						>
@@ -391,7 +391,7 @@ function Navbar() {
 							initial={{ opacity: 0 }}
 							animate={isOpen ? { opacity: 1 } : { opacity: 0 }}
 							exit={{ opacity: 0 }}
-							transition={{ duration: 0.5, delay: 0.5 }}
+							transition={{ duration: 0.5, delay: 0.6 }}
 							className="w-full flex flex-col"
 						>
 							<Link
