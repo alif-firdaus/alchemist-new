@@ -76,7 +76,7 @@ export default function HeroSection() {
 							</p>
 						</div>
 
-						<button className="w-fit h-fit flex items-center justify-center px-24 pt-3 pb-4 bg-[#A9FDBF] text-[17px] text-charcoal font-aeonik-regular">
+						<button className="w-fit h-fit flex items-center justify-center px-24 pt-3 pb-4 bg-[#A9FDBF] text-[17px] text-charcoal font-aeonik-regular hover:bg-floral-white duration-300 ease-in-out">
 							Schedule a call
 						</button>
 					</div>

@@ -399,12 +399,12 @@ function Navbar() {
 								target="_blank"
 								rel="noopener noreferrer"
 							>
-								<div className="w-full flex items-center justify-between pt-[14px] pb-4 border-t border-charcoal border-opacity-15">
+								<div className="group w-full flex items-center justify-between pt-[14px] pb-4 border-b border-charcoal border-opacity-15 cursor-pointer hover:border-opacity-40 duration-300 ease-in-out">
 									<p className="text-xl text-charcoal font-aeonik-regular">
 										Linkedin
 									</p>
 
-									<ArrowRightIcon className="text-charcoal w-[23px] h-[23px] text-opacity-50" />
+									<ArrowRightIcon className="text-charcoal w-[23px] h-[23px] text-opacity-40 group-hover:text-opacity-100 duration-300 ease-in-out" />
 								</div>
 							</Link>
 
@@ -413,12 +413,12 @@ function Navbar() {
 								target="_blank"
 								rel="noopener noreferrer"
 							>
-								<div className="w-full flex items-center justify-between pt-[14px] pb-4 border-t border-charcoal border-opacity-15">
+								<div className="group w-full flex items-center justify-between pt-[14px] pb-4 border-b border-charcoal border-opacity-15 cursor-pointer hover:border-opacity-40 duration-300 ease-in-out">
 									<p className="text-xl text-charcoal font-aeonik-regular">
 										Dribbble
 									</p>
 
-									<ArrowRightIcon className="text-charcoal w-[23px] h-[23px] text-opacity-50" />
+									<ArrowRightIcon className="text-charcoal w-[23px] h-[23px] text-opacity-40 group-hover:text-opacity-100 duration-300 ease-in-out" />
 								</div>
 							</Link>
 
@@ -427,12 +427,12 @@ function Navbar() {
 								target="_blank"
 								rel="noopener noreferrer"
 							>
-								<div className="w-full flex items-center justify-between pt-[14px] pb-4 border-t border-charcoal border-opacity-15">
+								<div className="group w-full flex items-center justify-between pt-[14px] pb-4 border-b border-charcoal border-opacity-15 cursor-pointer hover:border-opacity-40 duration-300 ease-in-out">
 									<p className="text-xl text-charcoal font-aeonik-regular">
 										Github
 									</p>
 
-									<ArrowRightIcon className="text-charcoal w-[23px] h-[23px] text-opacity-50" />
+									<ArrowRightIcon className="text-charcoal w-[23px] h-[23px] text-opacity-40 group-hover:text-opacity-100 duration-300 ease-in-out" />
 								</div>
 							</Link>
 
@@ -441,12 +441,12 @@ function Navbar() {
 								target="_blank"
 								rel="noopener noreferrer"
 							>
-								<div className="w-full flex items-center justify-between pt-[14px] pb-4 border-y border-charcoal border-opacity-15">
+								<div className="group w-full flex items-center justify-between pt-[14px] pb-4 border-b border-charcoal border-opacity-15 cursor-pointer hover:border-opacity-40 duration-300 ease-in-out">
 									<p className="text-xl text-charcoal font-aeonik-regular">
 										Twitter
 									</p>
 
-									<ArrowRightIcon className="text-charcoal w-[23px] h-[23px] text-opacity-50" />
+									<ArrowRightIcon className="text-charcoal w-[23px] h-[23px] text-opacity-40 group-hover:text-opacity-100 duration-300 ease-in-out" />
 								</div>
 							</Link>
 

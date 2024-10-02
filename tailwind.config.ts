@@ -21,7 +21,7 @@ const config: Config = {
 				"content-padding-2xl": "80px",
 			},
 			colors: {
-				charcoal: "#292929",
+				charcoal: "#171717",
 				"floral-white": "#FCFCFC",
 				"coral-red": "#F8413A",
 				"rich-black": "#040404",
