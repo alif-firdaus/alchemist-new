@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 // Import Components //
 import PrimaryButton from "../atoms/primary-button";
 

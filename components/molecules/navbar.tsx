@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -38,9 +38,6 @@ function Navbar() {
 
 	// Navbar Mobile View //
 	const [isOpen, setOpen] = useState(false);
-
-	// Store scroll position //
-	let scrollPosition = 0;
 
 	// Navbar Toggle //
 	const toggleMenu = () => {
@@ -80,38 +77,6 @@ function Navbar() {
 			);
 		}
 	};
-
-	// Navbar Background and Scroll Direction //
-	const [scrolling, setScrolling] = useState(false);
-	const [scrollDirection, setScrollDirection] = useState("up");
-
-	const handleScroll = () => {
-		const currentScrollY = window.scrollY;
-		if (currentScrollY > 0) {
-			setScrolling(true);
-		} else {
-			setScrolling(false);
-		}
-
-		if (currentScrollY > scrollPosition) {
-			setScrollDirection("down");
-		} else {
-			setScrollDirection("up");
-		}
-		scrollPosition = currentScrollY;
-	};
-
-	useEffect(() => {
-		let scrollPosition = 0;
-		if (window.scrollY > 0) {
-			setScrolling(true);
-		}
-
-		window.addEventListener("scroll", handleScroll);
-		return () => {
-			window.removeEventListener("scroll", handleScroll);
-		};
-	}, []);
 
 	return (
 		<>
@@ -209,7 +174,7 @@ function Navbar() {
 							</div>
 							<div className="flex w-full h-[70px] items-center justify-center border-b-[1px] border-dark-border">
 								<Image
-									src={dribbble}
+									src={x}
 									alt="X"
 									title="X"
 									priority={true}
@@ -235,53 +200,6 @@ function Navbar() {
 			{/* <-- ==== Navbar Mobile End ==== --> */}
 
 			{/* <-- ==== Navbar Desktop Start ==== --> */}
-			<nav
-				className={`hidden lg:flex fixed w-full px-sectionpxlg 2xl:px-sectionpx2xl z-[100] py-5 items-center justify-between transition-all duration-300 ${
-					scrolling
-						? "bg-bgbase bg-opacity-25 backdrop-blur-2xl"
-						: "bg-transparent"
-				} ${
-					scrollDirection === "down"
-						? "-translate-y-full"
-						: "translate-y-0"
-				}`}
-			>
-				<Link href="/">
-					<div className="w-fit h-fit pb-[2px]"></div>
-				</Link>
-
-				{/* <-- === Navbar Desktop Links Start === --> */}
-				<div className="flex items-center justify-center rounded-full border border-white border-opacity-10 gap-1 p-[6px]">
-					<Link href="/about">
-						<div className="flex items-center justify-center px-5 rounded-full bg-inherit py-[10px] hover:bg-white hover:bg-opacity-[0.07] duration-300 cursor-pointer">
-							<p className="text-sm text-white">About</p>
-						</div>
-					</Link>
-
-					<Link href="/expertise">
-						<div className="flex items-center justify-center px-5 rounded-full bg-inherit py-[10px] hover:bg-white hover:bg-opacity-[0.07] duration-300 cursor-pointer">
-							<p className="text-sm text-white">Expertise</p>
-						</div>
-					</Link>
-
-					<Link href="/#case-studies">
-						<div className="flex items-center justify-center px-5 rounded-full bg-inherit py-[10px] hover:bg-white hover:bg-opacity-[0.07] duration-300 cursor-pointer">
-							<p className="text-sm text-white">Case Studies</p>
-						</div>
-					</Link>
-
-					<Link
-						href="https://dribbble.com/aliffirdaus"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						<div className="flex items-center justify-center px-5 rounded-full bg-inherit py-[10px] hover:bg-white hover:bg-opacity-[0.07] duration-300 cursor-pointer">
-							<p className="text-sm text-white">Portfolio</p>
-						</div>
-					</Link>
-				</div>
-				{/* <-- === Navbar Desktop Links End === --> */}
-			</nav>
 
 			{/* <-- ==== Navbar Desktop End ==== --> */}
 		</>
