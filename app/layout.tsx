@@ -1,24 +1,10 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Cormorant } from "next/font/google";
 import "./globals.css";
 
 // Import Components //
 import LenisScroll from "@/components/organisms/lenis-scroll";
-import { NavbarProvider } from "@/components/organisms/navbar-context";
-import Navbar from "@/components/molecules/navbar";
-
-const cormorant = Cormorant({
-	subsets: ["latin"],
-	weight: ["300", "400", "500", "600", "700"],
-});
-
-const kodemono = localFont({
-	src: "./fonts/kodemono-regular.ttf",
-	weight: "400",
-	style: "normal",
-	variable: "--kode-mono",
-});
+import NavbarNew from "@/components/molecules/navbar";
 
 const aeonikLight = localFont({
 	src: "./fonts/aeonik-light.otf",
@@ -54,13 +40,11 @@ export default function RootLayout({
 	return (
 		<html
 			lang="en"
-			className={`${cormorant.className} ${aeonikLight.variable} ${aeonikRegular.variable} ${aeonikMedium.variable} ${kodemono.variable}`}
+			className={`${aeonikLight.variable} ${aeonikRegular.variable} ${aeonikMedium.variable}`}
 		>
-			<body className="bg-[#151515]">
-				<NavbarProvider>
-					<Navbar />
-					<LenisScroll>{children}</LenisScroll>
-				</NavbarProvider>
+			<body className="bg-bgbase">
+				<NavbarNew />
+				<LenisScroll>{children}</LenisScroll>
 			</body>
 		</html>
 	);
