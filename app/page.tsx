@@ -3,7 +3,7 @@ import HeroSection from "@/components/organisms/hero-section";
 
 export default function Home() {
 	return (
-		<main className="h-[200vh]">
+		<main className="w-screen h-fit">
 			<HeroSection />
 
 			<div className="w-full bg-floral-white h-screen relative z-10">

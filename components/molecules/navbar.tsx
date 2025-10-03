@@ -1,51 +1,58 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
 
 // Import Components //
-import { useNavbar } from "../organisms/navbar-context";
-
-// Import Icons //
-import { ArrowRightIcon } from "@radix-ui/react-icons";
+import PrimaryButton from "../atoms/primary-button";
 
 // Import Assets //
-import logo from "@/assets/images/img-alchemist-logo.svg";
+import logowhite from "@/assets/images/img-logotype-white.svg";
+import dottedmenu from "@/assets/icons/icon-dotted-menu.svg";
+import dottedclose from "@/assets/icons/icon-dotted-close.svg";
+import dribbble from "@/assets/icons/icon-dribbble.svg";
+import linkedin from "@/assets/icons/icon-linkedin.svg";
+import x from "@/assets/icons/icon-x.svg";
 
 function Navbar() {
 	// Navbar Links //
 	const navLinks = [
 		{
 			text: "About",
-			path: "#",
+			path: "/about",
 		},
 		{
 			text: "Expertise",
-			path: "#",
+			path: "/expertise",
 		},
 		{
-			text: "Case Studies",
-			path: "#",
+			text: "Works",
+			path: "/#case-studies",
 		},
 		{
-			text: "Portfolio",
+			text: "Contact",
 			path: "https://dribbble.com/aliffirdaus",
-		},
-		{
-			text: "Connect",
-			path: "#",
 		},
 	];
 
-	const [showContent, setShowContent] = useState(false);
-	const { isOpen, toggleMenu } = useNavbar();
+	// Navbar Mobile View //
+	const [isOpen, setOpen] = useState(false);
 
-	const closeMenu = () => {
-		toggleMenu();
+	// Store scroll position //
+	let scrollPosition = 0;
+
+	// Navbar Toggle //
+	const toggleMenu = () => {
+		setOpen((prevOpen) => !prevOpen);
 	};
 
+	// Close menu when navigating //
+	const closeMenu = () => {
+		setOpen(false);
+	};
+
+	// External Link Path //
 	interface NavItemProps {
 		text: string;
 		path: string;
@@ -74,403 +81,209 @@ function Navbar() {
 		}
 	};
 
-	const navbarMobileVariants = {
-		open: {
-			width: "100vw",
-			height: "100vh",
-			top: "0px",
-			right: "0px",
-			transition: {
-				duration: 0.7,
-				type: "tween",
-				ease: [0.76, 0, 0.24, 1],
-			},
-		},
-		closed: {
-			width: "100vw",
-			height: "0px",
-			top: "0px",
-			right: "0px",
-			transition: {
-				duration: 0.7,
-				delay: 0,
-				type: "tween",
-				ease: [0.76, 0, 0.24, 1],
-			},
-		},
+	// Navbar Background and Scroll Direction //
+	const [scrolling, setScrolling] = useState(false);
+	const [scrollDirection, setScrollDirection] = useState("up");
+
+	const handleScroll = () => {
+		const currentScrollY = window.scrollY;
+		if (currentScrollY > 0) {
+			setScrolling(true);
+		} else {
+			setScrolling(false);
+		}
+
+		if (currentScrollY > scrollPosition) {
+			setScrollDirection("down");
+		} else {
+			setScrollDirection("up");
+		}
+		scrollPosition = currentScrollY;
 	};
 
-	const navbarDesktopVariants = {
-		open: {
-			width: "41%",
-			height: "100vh",
-			top: "0px",
-			right: "0px",
-			transition: {
-				duration: 1,
-				type: "tween",
-				ease: [0.76, 0, 0.24, 1],
-			},
-		},
-		closed: {
-			width: "0px",
-			height: "100vh",
-			top: "0px",
-			right: "0px",
-			transition: {
-				duration: 1,
-				type: "tween",
-				ease: [0.76, 0, 0.24, 1],
-			},
-		},
-	};
+	useEffect(() => {
+		let scrollPosition = 0;
+		if (window.scrollY > 0) {
+			setScrolling(true);
+		}
+
+		window.addEventListener("scroll", handleScroll);
+		return () => {
+			window.removeEventListener("scroll", handleScroll);
+		};
+	}, []);
 
 	return (
 		<>
 			{/* <-- ==== Navbar Mobile Start ==== --> */}
 			<nav
-				className={`fixed top-0 left-0 right-0 w-full z-[100] block lg:transition-all lg:duration-500 ${
-					isOpen ? "lg:blur-md" : ""
-				}`}
+				className={`fixed w-screen h-fit z-[100] border-b-[1px] border-dark-border ${
+					isOpen ? "bg-void" : "bg-bgbase"
+				} `}
 			>
-				<div className="flex items-center justify-between px-content-padding-sm lg:px-content-padding-lg 2xl:px-content-padding-2xl pt-7 lg:pt-8">
+				<div className="flex w-full items-center justify-between h-full pl-content-padding-sm">
 					<Link href="/">
-						<Image
-							src={logo}
-							alt="Alchemist"
-							priority={true}
-							className="h-[18px] lg:h-5 w-auto"
-						/>
+						<div className="w-fit h-fit flex items-center justify-center">
+							<Image
+								src={logowhite}
+								alt="Alchemist Logo"
+								title="Alchemist Logo"
+								priority={true}
+								className="h-4 w-auto"
+							/>
+						</div>
 					</Link>
 
+					{/* <-- === Navbar Toggle === --> */}
 					<div
 						onClick={toggleMenu}
-						className="block w-fit lg:cursor-pointer"
+						className="flex items-center justify-center bg-floral-white w-[70px] h-[70px] cursor-pointer"
 					>
-						<p className="text-sm lg:text-[13px] text-floral-white text-opacity-90 font-kode-mono">
-							[ MENU ]
-						</p>
+						{isOpen ? (
+							<Image
+								src={dottedclose}
+								alt="Close"
+								title="Close"
+								priority={true}
+								className="h-8 w-auto"
+							/>
+						) : (
+							<Image
+								src={dottedmenu}
+								alt="Menu"
+								title="Menu"
+								priority={true}
+								className="h-8 w-auto"
+							/>
+						)}
 					</div>
+					{/* <-- === Navbar Toggle === --> */}
 				</div>
 			</nav>
 
-			{/* <-- ==== Navbar Mobile Open Start ==== --> */}
-			<motion.div
-				variants={navbarMobileVariants}
-				animate={isOpen ? "open" : "closed"}
-				initial="closed"
-				className="bg-[#A9FDBF] z-[200] fixed overflow-hidden h-screen lg:hidden"
-				onAnimationComplete={() => {
-					if (isOpen) {
-						setShowContent(true);
-					}
-				}}
+			{/* <-- ==== Navbar Open Start ==== --> */}
+			<div
+				className={`fixed w-full h-fit z-[80] px-5 bg-void border-b-[1px] border-dark-border lg:hidden
+            ${
+				isOpen
+					? "top-0 left-0 transition-all duration-500 ease-in-out"
+					: "-top-full left-0 transition-all duration-1000 ease-in-out"
+			}`}
 			>
-				{showContent && (
-					<>
-						<motion.div
-							initial={{ opacity: 0 }}
-							animate={isOpen ? { opacity: 1 } : { opacity: 0 }}
-							exit={{ opacity: 0 }}
-							className="flex items-center justify-between px-content-padding-sm py-7"
-						>
-							<motion.p
-								initial={{ opacity: 0 }}
-								animate={
-									isOpen ? { opacity: 1 } : { opacity: 0 }
-								}
-								exit={{ opacity: 0 }}
-								transition={{
-									duration: 0.5,
-									delay: 0.5,
-								}}
-								className="text-base text-charcoal font-aeonik-regular"
+				<div className="w-full flex flex-col h-full bg-void border-x-[1px] border-dark-border pt-[70px] justify-center items-center">
+					<div className="flex flex-col w-full h-fit">
+						{/* <-- === Navbar Links Start === --> */}
+						{navLinks.map((link, index) => (
+							<div
+								key={index}
+								className="flex w-full h-[70px] items-center justify-start px-[30px] text-base text-floral-white font-aeonik-regular border-b-[1px] border-dark-border"
 							>
-								Navigate
-							</motion.p>
-
-							<div onClick={toggleMenu} className="block w-fit">
-								<motion.p
-									initial={{ opacity: 0 }}
-									animate={
-										isOpen ? { opacity: 1 } : { opacity: 0 }
-									}
-									exit={{ opacity: 0 }}
-									transition={{
-										duration: 0.5,
-										delay: 0.5,
-									}}
-									className="text-sm text-charcoal text-opacity-90 font-kode-mono"
-								>
-									[ CLOSE ]
-								</motion.p>
+								<NavItem
+									key={index}
+									text={link.text}
+									path={link.path}
+								/>
 							</div>
-						</motion.div>
+						))}
+						{/* <-- === Navbar Links End === --> */}
 
-						<motion.div
-							initial={{ opacity: 0 }}
-							animate={isOpen ? { opacity: 1 } : { opacity: 0 }}
-							exit={{ opacity: 0 }}
-							className="flex flex-col items-start pt-14 px-content-padding-sm justify-between pb-28 h-full w-full"
-						>
-							<motion.div
-								initial={{ opacity: 0 }}
-								animate={
-									isOpen ? { opacity: 1 } : { opacity: 0 }
-								}
-								exit={{ opacity: 0 }}
-								transition={{
-									duration: 0.5,
-									delay: 0.5,
-								}}
-								className="flex flex-col gap-1 w-full h-fit items-start justify-center text-5xl font-aeonik-regular text-charcoal tracking-tight"
-							>
-								{navLinks.map(({ text, path }) => (
-									<NavItem
-										key={text}
-										text={text}
-										path={path}
-									/>
-								))}
-							</motion.div>
-
-							<motion.div
-								initial={{ opacity: 0 }}
-								animate={
-									isOpen ? { opacity: 1 } : { opacity: 0 }
-								}
-								exit={{ opacity: 0 }}
-								transition={{
-									duration: 0.5,
-									delay: 0.5,
-								}}
-								className="w-full flex flex-col"
-							>
-								<Link
-									href="https://www.linkedin.com/in/aliffirdaus97/"
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									<div className="w-full flex items-center justify-between pt-[14px] pb-4 border-t border-charcoal border-opacity-15">
-										<p className="text-xl text-charcoal font-aeonik-regular">
-											Linkedin
-										</p>
-
-										<ArrowRightIcon className="text-charcoal w-[23px] h-[23px] text-opacity-50" />
-									</div>
-								</Link>
-
-								<Link
-									href="https://dribbble.com/aliffirdaus"
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									<div className="w-full flex items-center justify-between pt-[14px] pb-4 border-t border-charcoal border-opacity-15">
-										<p className="text-xl text-charcoal font-aeonik-regular">
-											Dribbble
-										</p>
-
-										<ArrowRightIcon className="text-charcoal w-[23px] h-[23px] text-opacity-50" />
-									</div>
-								</Link>
-
-								<Link
-									href="https://github.com/alif-firdaus"
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									<div className="w-full flex items-center justify-between pt-[14px] pb-4 border-t border-charcoal border-opacity-15">
-										<p className="text-xl text-charcoal font-aeonik-regular">
-											Github
-										</p>
-
-										<ArrowRightIcon className="text-charcoal w-[23px] h-[23px] text-opacity-50" />
-									</div>
-								</Link>
-
-								<Link
-									href="https://x.com/whereisalif"
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									<div className="w-full flex items-center justify-between pt-[14px] pb-4 border-y border-charcoal border-opacity-15">
-										<p className="text-xl text-charcoal font-aeonik-regular">
-											Twitter
-										</p>
-
-										<ArrowRightIcon className="text-charcoal w-[23px] h-[23px] text-opacity-50" />
-									</div>
-								</Link>
-
-								<div className="flex items-center justify-end mt-7">
-									<p className="text-base text-charcoal font-aeonik-regular">
-										&copy; Alchemist 2024
-									</p>
-								</div>
-							</motion.div>
-						</motion.div>
-					</>
-				)}
-			</motion.div>
-			{/* <-- ==== Navbar Mobile Open End ==== --> */}
-
-			{/* <-- ==== Navbar Desktop Open Start ==== --> */}
-			<motion.div
-				variants={navbarDesktopVariants}
-				animate={isOpen ? "open" : "closed"}
-				initial="closed"
-				className="bg-[#A9FDBF] z-[200] fixed overflow-hidden h-fit hidden lg:block"
-			>
-				<>
-					<motion.div
-						initial={{ opacity: 0 }}
-						animate={isOpen ? { opacity: 1 } : { opacity: 0 }}
-						exit={{ opacity: 0 }}
-						transition={{
-							duration: 0.5,
-							delay: 0.6,
-						}}
-						className="flex items-center justify-between px-content-padding-lg py-7"
-					>
-						<motion.p
-							initial={{ opacity: 0 }}
-							animate={isOpen ? { opacity: 1 } : { opacity: 0 }}
-							exit={{ opacity: 0 }}
-							transition={{
-								duration: 0.5,
-								ease: "easeInOut",
-							}}
-							className="text-[15px] text-charcoal font-aeonik-regular"
-						>
-							Navigate
-						</motion.p>
-
-						<div
-							onClick={toggleMenu}
-							className="block w-fit cursor-pointer"
-						>
-							<motion.p
-								initial={{ opacity: 0 }}
-								animate={
-									isOpen ? { opacity: 1 } : { opacity: 0 }
-								}
-								exit={{ opacity: 0 }}
-								transition={{
-									duration: 0.5,
-									ease: "easeInOut",
-								}}
-								className="text-[13px] text-charcoal text-opacity-90 font-kode-mono"
-							>
-								[ CLOSE ]
-							</motion.p>
+						{/* <-- === Socials Start === --> */}
+						<div className="w-full flex items-center justify-center h-fit">
+							<div className="flex w-full h-[70px] items-center justify-center border-r-[1px] border-b-[1px] border-dark-border">
+								<Image
+									src={dribbble}
+									alt="Dribbble"
+									title="Dribbble"
+									priority={true}
+									className="h-[17px] w-auto"
+								/>
+							</div>
+							<div className="flex w-full h-[70px] items-center justify-center border-r-[1px] border-b-[1px] border-dark-border">
+								<Image
+									src={linkedin}
+									alt="Linkedin"
+									title="Linkedin"
+									priority={true}
+									className="h-[17px] w-auto"
+								/>
+							</div>
+							<div className="flex w-full h-[70px] items-center justify-center border-b-[1px] border-dark-border">
+								<Image
+									src={dribbble}
+									alt="X"
+									title="X"
+									priority={true}
+									className="h-[17px] w-auto"
+								/>
+							</div>
 						</div>
-					</motion.div>
+						{/* <-- === Socials End === --> */}
 
-					<motion.div
-						initial={{ opacity: 0 }}
-						animate={isOpen ? { opacity: 1 } : { opacity: 0 }}
-						exit={{ opacity: 0 }}
-						className="flex flex-col items-start pt-14 px-content-padding-lg justify-between pb-28 h-full w-full"
+						{/* <-- === CTA Start === --> */}
+						<div className="flex w-full h-fit items-center justify-center px-[30px] py-[30px]">
+							<PrimaryButton
+								text="Book a Discovery Call"
+								bgColor="bg-charcoal"
+								textColor="text-floral-white"
+							/>
+						</div>
+						{/* <-- === CTA End === --> */}
+					</div>
+				</div>
+			</div>
+			{/* <-- ==== Navbar Open End ==== --> */}
+			{/* <-- ==== Navbar Mobile End ==== --> */}
+
+			{/* <-- ==== Navbar Desktop Start ==== --> */}
+			<nav
+				className={`hidden lg:flex fixed w-full px-sectionpxlg 2xl:px-sectionpx2xl z-[100] py-5 items-center justify-between transition-all duration-300 ${
+					scrolling
+						? "bg-bgbase bg-opacity-25 backdrop-blur-2xl"
+						: "bg-transparent"
+				} ${
+					scrollDirection === "down"
+						? "-translate-y-full"
+						: "translate-y-0"
+				}`}
+			>
+				<Link href="/">
+					<div className="w-fit h-fit pb-[2px]"></div>
+				</Link>
+
+				{/* <-- === Navbar Desktop Links Start === --> */}
+				<div className="flex items-center justify-center rounded-full border border-white border-opacity-10 gap-1 p-[6px]">
+					<Link href="/about">
+						<div className="flex items-center justify-center px-5 rounded-full bg-inherit py-[10px] hover:bg-white hover:bg-opacity-[0.07] duration-300 cursor-pointer">
+							<p className="text-sm text-white">About</p>
+						</div>
+					</Link>
+
+					<Link href="/expertise">
+						<div className="flex items-center justify-center px-5 rounded-full bg-inherit py-[10px] hover:bg-white hover:bg-opacity-[0.07] duration-300 cursor-pointer">
+							<p className="text-sm text-white">Expertise</p>
+						</div>
+					</Link>
+
+					<Link href="/#case-studies">
+						<div className="flex items-center justify-center px-5 rounded-full bg-inherit py-[10px] hover:bg-white hover:bg-opacity-[0.07] duration-300 cursor-pointer">
+							<p className="text-sm text-white">Case Studies</p>
+						</div>
+					</Link>
+
+					<Link
+						href="https://dribbble.com/aliffirdaus"
+						target="_blank"
+						rel="noopener noreferrer"
 					>
-						<motion.div
-							initial={{ opacity: 0 }}
-							animate={isOpen ? { opacity: 1 } : { opacity: 0 }}
-							exit={{ opacity: 0 }}
-							transition={{
-								duration: 0.5,
-								delay: 0.6,
-							}}
-							className="flex flex-col gap-1 w-full h-fit items-start  justify-center text-6xl font-aeonik-regular text-charcoal tracking-tight"
-						>
-							{navLinks.map(({ text, path }) => (
-								<NavItem key={text} text={text} path={path} />
-							))}
-						</motion.div>
+						<div className="flex items-center justify-center px-5 rounded-full bg-inherit py-[10px] hover:bg-white hover:bg-opacity-[0.07] duration-300 cursor-pointer">
+							<p className="text-sm text-white">Portfolio</p>
+						</div>
+					</Link>
+				</div>
+				{/* <-- === Navbar Desktop Links End === --> */}
+			</nav>
 
-						<motion.div
-							initial={{ opacity: 0 }}
-							animate={isOpen ? { opacity: 1 } : { opacity: 0 }}
-							exit={{ opacity: 0 }}
-							transition={{ duration: 0.5, delay: 0.6 }}
-							className="w-full flex flex-col"
-						>
-							<Link
-								href="https://www.linkedin.com/in/aliffirdaus97/"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								<div className="group w-full flex items-center justify-between pt-[14px] pb-4 border-b border-charcoal border-opacity-15 cursor-pointer hover:border-opacity-40 duration-300 ease-in-out">
-									<p className="text-xl text-charcoal font-aeonik-regular">
-										Linkedin
-									</p>
-
-									<ArrowRightIcon className="text-charcoal w-[23px] h-[23px] text-opacity-40 group-hover:text-opacity-100 duration-300 ease-in-out" />
-								</div>
-							</Link>
-
-							<Link
-								href="https://dribbble.com/aliffirdaus"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								<div className="group w-full flex items-center justify-between pt-[14px] pb-4 border-b border-charcoal border-opacity-15 cursor-pointer hover:border-opacity-40 duration-300 ease-in-out">
-									<p className="text-xl text-charcoal font-aeonik-regular">
-										Dribbble
-									</p>
-
-									<ArrowRightIcon className="text-charcoal w-[23px] h-[23px] text-opacity-40 group-hover:text-opacity-100 duration-300 ease-in-out" />
-								</div>
-							</Link>
-
-							<Link
-								href="https://github.com/alif-firdaus"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								<div className="group w-full flex items-center justify-between pt-[14px] pb-4 border-b border-charcoal border-opacity-15 cursor-pointer hover:border-opacity-40 duration-300 ease-in-out">
-									<p className="text-xl text-charcoal font-aeonik-regular">
-										Github
-									</p>
-
-									<ArrowRightIcon className="text-charcoal w-[23px] h-[23px] text-opacity-40 group-hover:text-opacity-100 duration-300 ease-in-out" />
-								</div>
-							</Link>
-
-							<Link
-								href="https://x.com/whereisalif"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								<div className="group w-full flex items-center justify-between pt-[14px] pb-4 border-b border-charcoal border-opacity-15 cursor-pointer hover:border-opacity-40 duration-300 ease-in-out">
-									<p className="text-xl text-charcoal font-aeonik-regular">
-										Twitter
-									</p>
-
-									<ArrowRightIcon className="text-charcoal w-[23px] h-[23px] text-opacity-40 group-hover:text-opacity-100 duration-300 ease-in-out" />
-								</div>
-							</Link>
-
-							<motion.div
-								initial={{ opacity: 0 }}
-								animate={
-									isOpen ? { opacity: 1 } : { opacity: 0 }
-								}
-								exit={{ opacity: 0 }}
-								transition={{
-									duration: 0.5,
-									ease: "easeInOut",
-								}}
-								className="flex items-center justify-end mt-7"
-							>
-								<p className="text-[15px] text-charcoal font-aeonik-regular">
-									&copy; Alchemist 2024
-								</p>
-							</motion.div>
-						</motion.div>
-					</motion.div>
-				</>
-			</motion.div>
-			{/* <-- ==== Navbar Desktop Open End ==== --> */}
+			{/* <-- ==== Navbar Desktop End ==== --> */}
 		</>
 	);
 }
