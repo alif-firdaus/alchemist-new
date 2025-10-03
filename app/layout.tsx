@@ -4,7 +4,7 @@ import "./globals.css";
 
 // Import Components //
 import LenisScroll from "@/components/organisms/lenis-scroll";
-import NavbarNew from "@/components/molecules/navbar";
+import Navbar from "@/components/molecules/navbar";
 
 const aeonikLight = localFont({
 	src: "./fonts/aeonik-light.otf",
@@ -43,7 +43,7 @@ export default function RootLayout({
 			className={`${aeonikLight.variable} ${aeonikRegular.variable} ${aeonikMedium.variable}`}
 		>
 			<body className="bg-bgbase">
-				<NavbarNew />
+				<Navbar />
 				<LenisScroll>{children}</LenisScroll>
 			</body>
 		</html>
